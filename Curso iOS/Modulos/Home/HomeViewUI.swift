@@ -16,6 +16,29 @@ protocol HomeViewUIDelegate {
 }
 
 class HomeViewUI: UIView{
+    //Navigation Bar
+    private lazy var navigationBar: UINavigationBar = {
+        let navigationController = UINavigationBar(frame: .zero)
+        navigationController.backgroundColor = UIColor(cgColor: CGColor(red: 255/255, green: 203/255, blue: 219/255, alpha: 1))
+        navigationController.translatesAutoresizingMaskIntoConstraints = false
+        return navigationController
+    }()
+    //View
+    private lazy var contentView: UIView = {
+        let scrollview = UIView(frame: .zero)
+        scrollview.backgroundColor = .white
+        scrollview.translatesAutoresizingMaskIntoConstraints = false
+        return scrollview
+    }()
+    
+    // CardView
+    private lazy var cardView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .cyan
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // Boton
     var button1: UIButton = {
         let configButton = UIButton()
@@ -54,7 +77,17 @@ class HomeViewUI: UIView{
     }
 
     func setupUIElements (){
+        addSubview(navigationBar)
+        addSubview(contentView)
+        contentView.addSubview(cardView) // pinta elementos
+        cardView.addSubview(label1)
+        cardView.addSubview(button1)
+    }
+    
+    func setupConstraints () {
+        NSLayoutConstraint.activate([
         
+        ])
     }
 
 }
