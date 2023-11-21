@@ -6,19 +6,18 @@
 //  2023 ___ORGANIZATIONNAME___.
 //
 
-import Foundation
+//import Foundation
 import UIKit
 class HomeView: UIViewController {
     var presenter: HomePresenterProtocol?
     private var ui: HomeViewUI?
-    
+    var x = 1
     
     override func loadView() {
-        ui = HomeViewUI(
-            navigation: self.navigationController!,
-            delegate: self
-        )
+        
+        ui = HomeViewUI(navigation: self.navigationController!,delegate: self)
         view = ui
+        
     }
     
 }
