@@ -12,7 +12,9 @@
 import UIKit
 
 protocol HomeViewUIDelegate {
-    
+    func goToSeries()
+    func goToCharacterViewUI()
+    func goToMovieViewUI()
 }
 
 class HomeViewUI: UIView{
@@ -41,38 +43,41 @@ class HomeViewUI: UIView{
     }()
     
     // Label
-    var label1: UILabel = {
+    public var label1: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Didot", size: 50)
-        label.text = "Hello world"
+        label.text = "Kitty App"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     // Boton
-    var button1: UIButton = {
+    var movieButton: UIButton = {
         let configButton = UIButton()
         configButton.backgroundColor = .systemPink
-        configButton.setTitle("Boton 1", for: .normal)
-        configButton.layer.cornerRadius = 20
+        configButton.setTitle("Pelicula", for: .normal)
+        configButton.layer.cornerRadius = 10
+        configButton.addTarget(self, action: #selector(movieFunc), for: .touchUpInside)
         configButton.translatesAutoresizingMaskIntoConstraints = false
         return configButton
     }()
     
-    var button2: UIButton = {
+    var seriesButton: UIButton = {
         let configButton = UIButton()
         configButton.backgroundColor = .systemPink
-        configButton.setTitle("Boton 2", for: .normal)
-        configButton.layer.cornerRadius = 20
+        configButton.setTitle("Serie", for: .normal)
+        configButton.layer.cornerRadius = 10
+        configButton.addTarget(self, action: #selector(seriesFunc), for: .touchUpInside)
         configButton.translatesAutoresizingMaskIntoConstraints = false
         return configButton
     }()
     
-    var button3: UIButton = {
+    var characterButton: UIButton = {
         let configButton = UIButton()
         configButton.backgroundColor = .systemPink
-        configButton.setTitle("Boton 3", for: .normal)
-        configButton.layer.cornerRadius = 20
+        configButton.setTitle("Personaje", for: .normal)
+        configButton.layer.cornerRadius = 10
+        configButton.addTarget(self, action: #selector(characterFunc), for: .touchUpInside)
         configButton.translatesAutoresizingMaskIntoConstraints = false
         return configButton
     }()
@@ -102,9 +107,9 @@ class HomeViewUI: UIView{
         self.addSubview(navigationBar)
         addSubview(contentView)
         contentView.addSubview(label1)
-        contentView.addSubview(button1)
-        contentView.addSubview(button2)
-        contentView.addSubview(button3)
+        contentView.addSubview(movieButton)
+        contentView.addSubview(seriesButton)
+        contentView.addSubview(characterButton)
     }
     
     func setupConstraints () {
@@ -121,24 +126,36 @@ class HomeViewUI: UIView{
             label1.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             label1.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
-            button1.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 70),
-            button1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            button1.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            button1.heightAnchor.constraint(equalToConstant: 40),
+            movieButton.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 70),
+            movieButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            movieButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            movieButton.heightAnchor.constraint(equalToConstant: 40),
             
-            button2.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 30),
-            button2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            button2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            button2.heightAnchor.constraint(equalToConstant: 40),
+            seriesButton.topAnchor.constraint(equalTo: movieButton.bottomAnchor, constant: 30),
+            seriesButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            seriesButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            seriesButton.heightAnchor.constraint(equalToConstant: 40),
             
-            button3.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 30),
-            button3.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            button3.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            button3.heightAnchor.constraint(equalToConstant: 40),
+            characterButton.topAnchor.constraint(equalTo: seriesButton.bottomAnchor, constant: 30),
+            characterButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            characterButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            characterButton.heightAnchor.constraint(equalToConstant: 40),
             
         ])
     }
 
+    @objc func seriesFunc() {
+        delegate?.goToSeries()
+    }
+    
+    @objc func characterFunc() {
+        delegate?.goToCharacterViewUI()
+    }
+    
+    @objc func movieFunc(){
+        delegate?.goToMovieViewUI()
+        
+    }
 }
 
 

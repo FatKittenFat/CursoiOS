@@ -24,7 +24,7 @@ var window: UIWindow? // pantalla del iphone
         
         // parametros de navegacion
         window?.makeKeyAndVisible()
-        navigation.isNavigationBarHidden = true // mostrar o no el boton para regresar
+        navigation.isNavigationBarHidden = false // mostrar o no el boton para regresar
         
         // conexion a modulo inicializador
         let x = HomeMain.createModule(navigation: navigation)
