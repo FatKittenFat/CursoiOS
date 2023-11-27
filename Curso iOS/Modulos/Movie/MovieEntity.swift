@@ -9,31 +9,12 @@
 import Foundation
 
 struct Question {
-    
-    let question: String
-    let answer: String
-    
-    init (q: String, a: String){
-        question = q
-        answer = a
-    }
-}
 
-struct Quizz {
-    let quizz = Question(q: "Su pelicula es Scary Movie", a: "True")
-    var questionNumber = 0
+    let question: String
+    let answer1: String
+    let answer2: String
+    let answer3: String
     
-    func checkAnswer(userAnswer: String) -> Bool{
-        if userAnswer == quizz.answer {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func questionMovie() -> String {
-        return quizz.question
-    }
-    
+ 
 }
 

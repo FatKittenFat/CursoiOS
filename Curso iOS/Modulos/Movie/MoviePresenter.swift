@@ -18,7 +18,7 @@ class MoviePresenter {
 
 extension MoviePresenter: MoviePresenterProtocol {
     func quizzMoviePresenter() {
-        <#code#>
+        print("movie presenter")
     }
     
     

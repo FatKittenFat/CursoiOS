@@ -11,7 +11,6 @@ import UIKit
 class MovieView: UIViewController {
     var presenter: MoviePresenterProtocol?
     private var ui: MovieViewUI?
-    var quizz = Quizz()
     
     override func loadView() {
         ui = MovieViewUI(
@@ -25,7 +24,6 @@ class MovieView: UIViewController {
 
 extension MovieView: MovieViewProtocol {
     func quizzMovie() {
-        ui?.title.text = quizz.questionMovie()
     }
     
     
@@ -33,7 +31,6 @@ extension MovieView: MovieViewProtocol {
 
 extension MovieView: MovieViewUIDelegate {
     func quizzMovieViewUI() {
-        presenter?.quizzMoviePresenter()
     }
     
     
