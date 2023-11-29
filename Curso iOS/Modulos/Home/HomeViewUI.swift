@@ -10,6 +10,7 @@
 // aqui se van a crear componentes y logica de interfaz
 
 import UIKit
+import CLTypingLabel
 
 protocol HomeViewUIDelegate {
     func goToSeries()
@@ -43,12 +44,23 @@ class HomeViewUI: UIView{
     }()
     
     // Label
-    public var label1: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Didot", size: 50)
-        label.text = "Kitty App"
+    public var label1: CLTypingLabel  = {
+        let label = CLTypingLabel()
+        label.charInterval = 0.1
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.font = UIFont(name: "Marker Felt", size: 50)
+        label.text = "Adivina con FLORK :)"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    var imageHome: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "Inicio")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     // Boton
@@ -107,6 +119,7 @@ class HomeViewUI: UIView{
         self.addSubview(navigationBar)
         addSubview(contentView)
         contentView.addSubview(label1)
+        contentView.addSubview(imageHome)
         contentView.addSubview(movieButton)
         contentView.addSubview(seriesButton)
         contentView.addSubview(characterButton)
@@ -123,10 +136,18 @@ class HomeViewUI: UIView{
             contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            label1.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            label1.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60),
+            label1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            label1.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             label1.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
-            movieButton.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 70),
+            imageHome.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 30),
+            imageHome.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            imageHome.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            imageHome.heightAnchor.constraint(equalToConstant: 270),
+            imageHome.widthAnchor.constraint(equalToConstant: 270),
+            
+            movieButton.topAnchor.constraint(equalTo: imageHome.bottomAnchor, constant: 30),
             movieButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             movieButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             movieButton.heightAnchor.constraint(equalToConstant: 40),

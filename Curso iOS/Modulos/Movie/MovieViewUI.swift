@@ -15,14 +15,6 @@ protocol MovieViewUIDelegate {
 
 class MovieViewUI: UIView{
     
-    let quizz = [
-        Question(question: "A que Pelicula pertenece?", answer1: "El Resplandor", answer2: "Scary movie", answer3: "Pelicula de miedo"),
-        Question(question: "Su pelicula es It?", answer1: "Si", answer2: "No", answer3: "que miedo!!")
-    ]
-    var questionNumber = 0
-    
-    let answers: Array = [2, 2]
-    
     private lazy var navigation: UINavigationBar = {
         let navigationConfig = UINavigationBar(frame: .zero)
         navigationConfig.backgroundColor = UIColor(cgColor: CGColor(red: 204/255, green: 169/255, blue: 221/255, alpha: 1))
@@ -40,8 +32,8 @@ class MovieViewUI: UIView{
     public var title: UILabel = {
         let label = UILabel()
         label.text = "Cuantas peliculas conoces?"
-        label.numberOfLines = 2
-        label.font = UIFont(name: "Chalkboard SE", size: 40)
+        label.numberOfLines = 3
+        label.font = UIFont(name: "Marker Felt", size: 40)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -49,8 +41,8 @@ class MovieViewUI: UIView{
     
     var imageMovie: UIImageView = {
         let image = UIImageView()
+        image.image = UIImage(named: "pregunta")
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "ScaryMovie.jpg")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -68,7 +60,6 @@ class MovieViewUI: UIView{
     var button1: UIButton = {
         let configButton = UIButton()
         configButton.backgroundColor = .systemPink
-        //configButton.setTitle(" ", for: .normal)
         configButton.layer.cornerRadius = 10
         configButton.isEnabled = false
         configButton.isHidden = true
@@ -82,7 +73,6 @@ class MovieViewUI: UIView{
         configButton.backgroundColor = .systemPink
         configButton.isEnabled = false
         configButton.isHidden = true
-        //configButton.setTitle(" ", for: .normal)
         configButton.layer.cornerRadius = 10
         configButton.addTarget(self, action: #selector(checkAnswer), for: .touchUpInside)
         configButton.translatesAutoresizingMaskIntoConstraints = false
@@ -94,7 +84,6 @@ class MovieViewUI: UIView{
         configButton.backgroundColor = .systemPink
         configButton.isEnabled = false
         configButton.isHidden = true
-        //configButton.setTitle(" ", for: .normal)
         configButton.layer.cornerRadius = 10
         configButton.addTarget(self, action: #selector(checkAnswer), for: .touchUpInside)
         configButton.translatesAutoresizingMaskIntoConstraints = false
@@ -160,7 +149,7 @@ class MovieViewUI: UIView{
             contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
             
@@ -202,35 +191,38 @@ class MovieViewUI: UIView{
     @objc func startQuizz () {
         print("start Quizz")
         
-        title.text = quizz[questionNumber].question
+        let startQuestions = [Question.questionNumber].count - 1
+        
+        title.text = Question.quizz[startQuestions].question
+        
+        imageMovie.image = UIImage(named: "\(startQuestions)")
         
         buttonStart.isEnabled = false
         buttonStart.isHidden = true
         
         button1.isHidden = false
         button1.isEnabled = true
-        button1.setTitle(quizz[questionNumber].answer1, for: .normal)
+        button1.setTitle(Question.quizz[startQuestions].answer1, for: .normal)
         
         button2.isHidden = false
         button2.isEnabled = true
-        button2.setTitle(quizz[questionNumber].answer2, for: .normal)
+        button2.setTitle(Question.quizz[startQuestions].answer2, for: .normal)
         
         button3.isHidden = false
         button3.isEnabled = true
-        button3.setTitle(quizz[questionNumber].answer3, for: .normal)
-        
-//        nextButton.isHidden = true
-//        nextButton.isEnabled = false
-
+        button3.setTitle(Question.quizz[startQuestions].answer3, for: .normal)
     }
     
     @objc func nextQuestion(){
-        if questionNumber + 1 < quizz.count {
-            questionNumber += 1
-            title.text = quizz[questionNumber].question
-            button1.setTitle(quizz[questionNumber].answer1, for: .normal)
-            button2.setTitle(quizz[questionNumber].answer2, for: .normal)
-            button3.setTitle(quizz[questionNumber].answer3, for: .normal)
+        if Question.questionNumber + 1 < Question.quizz.count {
+            Question.questionNumber += 1
+            title.text = Question.quizz[Question.questionNumber].question
+            
+            imageMovie.image = UIImage(named: "\(Question.questionNumber)")
+            
+            button1.setTitle(Question.quizz[Question.questionNumber].answer1, for: .normal)
+            button2.setTitle(Question.quizz[Question.questionNumber].answer2, for: .normal)
+            button3.setTitle(Question.quizz[Question.questionNumber].answer3, for: .normal)
             
             button1.backgroundColor = .systemPink
             button2.backgroundColor = .systemPink
@@ -239,8 +231,11 @@ class MovieViewUI: UIView{
             nextButton.isHidden = true
             nextButton.isEnabled = false
             
+            
         } else {
             title.text = "Terminaste las preguntas"
+            
+            imageMovie.image = UIImage(named: "termino")
             
             button1.isHidden = true
             button1.isEnabled = false
@@ -253,32 +248,86 @@ class MovieViewUI: UIView{
             
             nextButton.isHidden = true
             nextButton.isEnabled = false
+            
+            Question.questionNumber = 0
         }
         
     }
     
+
     @objc func checkAnswer(_ sender: UIButton){
+        let question = Int(Question.numberQuestion[Question.questionNumber])
+        //let question = Int(Question.answers[Question.questionNumber]) - 1
         let userAnswer = sender.currentTitle
-        let Question1 = quizz[questionNumber].answer2
-        if Question1 == userAnswer {
-            button2.backgroundColor = .green
-            button1.isEnabled = false
-            button1.backgroundColor = .darkGray
-            button3.isEnabled = false
-            button3.backgroundColor = .darkGray
-            
-            print("Respuesta correcta")
-        } else {
-            sender.backgroundColor = .red
-            button2.backgroundColor = .green
-            sender.isEnabled = false
-            print("Respuesta incorrecta")
-        }
         
+        switch question {
+            // Pregunta 1
+        case 1 :
+            if Question.quizz[Question.questionNumber].answer2 == userAnswer {
+                button1.backgroundColor = .lightGray
+                button2.backgroundColor = .green
+                button3.backgroundColor = .lightGray
+                imageMovie.image = UIImage(named: "Si")
+                
+            } else {
+                title.text = "Incorrecto, la respuesta correcta es: \(Question.quizz[Question.questionNumber].answer2)"
+                sender.backgroundColor = .red
+                imageMovie.image = UIImage(named: "No")
+            }
+            break
+            // Pregunta 2
+        case 2 :
+            if Question.quizz[Question.questionNumber].answer1 == userAnswer {
+                button1.backgroundColor = .green
+                button2.backgroundColor = .lightGray
+                button3.backgroundColor = .lightGray
+                imageMovie.image = UIImage(named: "Si")
+                
+            } else {
+                sender.backgroundColor = .red
+                title.text = "Incorrecto, la respuesta correcta es: \(Question.quizz[Question.questionNumber].answer2)"
+                imageMovie.image = UIImage(named: "No")
+                
+            }
+            break
+            
+        case 3:
+            if Question.quizz[Question.questionNumber].answer1 == userAnswer {
+                button1.backgroundColor = .green
+                button3.backgroundColor = .lightGray
+                button2.backgroundColor = .lightGray
+                imageMovie.image = UIImage(named: "Si")
+                
+            } else {
+                sender.backgroundColor = .red
+                imageMovie.image = UIImage(named: "No")
+                
+            }
+            break
+            
+        case 4:
+            if Question.quizz[Question.questionNumber].answer3 == userAnswer {
+                button1.backgroundColor = .lightGray
+                button3.backgroundColor = .green
+                button2.backgroundColor = .lightGray
+                imageMovie.image = UIImage(named: "Si")
+                
+            } else {
+                sender.backgroundColor = .red
+                imageMovie.image = UIImage(named: "No")
+                
+            }
+        default:
+            button1.backgroundColor = .red
+            button2.backgroundColor = .red
+            button3.backgroundColor = .red
+        }
         nextButton.isEnabled = true
         nextButton.isHidden = false
-        
+    
     }
+    
+ 
     
 }
 

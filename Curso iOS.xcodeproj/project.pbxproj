@@ -43,6 +43,7 @@
 		13C8FBF62B02F43800A6028F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8FBF52B02F43800A6028F /* SceneDelegate.swift */; };
 		13C8FBFD2B02F43A00A6028F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13C8FBFC2B02F43A00A6028F /* Assets.xcassets */; };
 		13C8FC002B02F43A00A6028F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C8FBFE2B02F43A00A6028F /* LaunchScreen.storyboard */; };
+		71A32F8AA272BA3A395D3800 /* Pods_Curso_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4227617FC236179C7A72B1C1 /* Pods_Curso_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,9 @@
 		13C8FBFC2B02F43A00A6028F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13C8FBFF2B02F43A00A6028F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13C8FC012B02F43A00A6028F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4227617FC236179C7A72B1C1 /* Pods_Curso_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Curso_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A6938701386956AB7F54BAC /* Pods-Curso iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curso iOS.debug.xcconfig"; path = "Target Support Files/Pods-Curso iOS/Pods-Curso iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		AC28399D2FF7B2751FF3A87A /* Pods-Curso iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curso iOS.release.xcconfig"; path = "Target Support Files/Pods-Curso iOS/Pods-Curso iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71A32F8AA272BA3A395D3800 /* Pods_Curso_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +178,8 @@
 			children = (
 				13C8FBF22B02F43800A6028F /* Curso iOS */,
 				13C8FBF12B02F43800A6028F /* Products */,
+				20B72AC7EA743663AC6E7CF3 /* Pods */,
+				CA42BA71CCEBBDFA63106167 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,6 +204,23 @@
 			path = "Curso iOS";
 			sourceTree = "<group>";
 		};
+		20B72AC7EA743663AC6E7CF3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A6938701386956AB7F54BAC /* Pods-Curso iOS.debug.xcconfig */,
+				AC28399D2FF7B2751FF3A87A /* Pods-Curso iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CA42BA71CCEBBDFA63106167 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4227617FC236179C7A72B1C1 /* Pods_Curso_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13C8FC042B02F43A00A6028F /* Build configuration list for PBXNativeTarget "Curso iOS" */;
 			buildPhases = (
+				D63EA3750344860A6F73BDC2 /* [CP] Check Pods Manifest.lock */,
 				13C8FBEC2B02F43800A6028F /* Sources */,
 				13C8FBED2B02F43800A6028F /* Frameworks */,
 				13C8FBEE2B02F43800A6028F /* Resources */,
+				F0E538123C13932D7B70C24D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -261,6 +287,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D63EA3750344860A6F73BDC2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Curso iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0E538123C13932D7B70C24D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Curso iOS/Pods-Curso iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Curso iOS/Pods-Curso iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Curso iOS/Pods-Curso iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		13C8FBEC2B02F43800A6028F /* Sources */ = {
@@ -439,15 +507,18 @@
 		};
 		13C8FC052B02F43A00A6028F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A6938701386956AB7F54BAC /* Pods-Curso iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FSL33W7H9S;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Curso iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -466,15 +537,18 @@
 		};
 		13C8FC062B02F43A00A6028F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC28399D2FF7B2751FF3A87A /* Pods-Curso iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FSL33W7H9S;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Curso iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
