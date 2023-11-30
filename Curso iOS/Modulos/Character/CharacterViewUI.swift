@@ -150,6 +150,8 @@ class CharacterViewUI: UIView{
         contentView.addSubview(answerButton2)
         contentView.addSubview(answerButton3)
         contentView.addSubview(nextButton)
+        
+        print("Hello world")
     }
     
     func setupConstraints(){
