@@ -15,16 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KittyApp :)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gny-qU-VOX">
-                                <rect key="frame" x="137" y="416" width="119" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kittyApp-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="sxh-gJ-g3r">
+                                <rect key="frame" x="76" y="354" width="240" height="144"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="0.88517750850340138" blue="0.99215686270000003" alpha="0.92472061260000005" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sxh-gJ-g3r" secondAttribute="bottom" constant="320" id="27m-jq-L8A"/>
+                            <constraint firstItem="sxh-gJ-g3r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="295" id="Rt5-x9-rEH"/>
+                            <constraint firstItem="sxh-gJ-g3r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="eWG-7s-ZLR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sxh-gJ-g3r" secondAttribute="trailing" constant="77" id="evj-2s-SoG"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -32,9 +34,7 @@
             <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="Gny-qU-VOX">
-            <size key="intrinsicContentSize" width="112.66666666666667" height="20"/>
-        </designable>
-    </designables>
+    <resources>
+        <image name="kittyApp-removebg-preview" width="500" height="500"/>
+    </resources>
 </document>

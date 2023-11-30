@@ -66,7 +66,7 @@ class HomeViewUI: UIView{
     // Boton
     var movieButton: UIButton = {
         let configButton = UIButton()
-        configButton.backgroundColor = .systemPink
+        configButton.backgroundColor = UIColor(cgColor: CGColor(red: 234/255, green: 137/255, blue: 154/255, alpha: 1))
         configButton.setTitle("Pelicula", for: .normal)
         configButton.layer.cornerRadius = 10
         configButton.addTarget(self, action: #selector(movieFunc), for: .touchUpInside)
@@ -76,7 +76,7 @@ class HomeViewUI: UIView{
     
     var seriesButton: UIButton = {
         let configButton = UIButton()
-        configButton.backgroundColor = .systemPink
+        configButton.backgroundColor = UIColor(cgColor: CGColor(red: 234/255, green: 137/255, blue: 154/255, alpha: 1))
         configButton.setTitle("Serie", for: .normal)
         configButton.layer.cornerRadius = 10
         configButton.addTarget(self, action: #selector(seriesFunc), for: .touchUpInside)
@@ -86,7 +86,7 @@ class HomeViewUI: UIView{
     
     var characterButton: UIButton = {
         let configButton = UIButton()
-        configButton.backgroundColor = .systemPink
+        configButton.backgroundColor = UIColor(cgColor: CGColor(red: 234/255, green: 137/255, blue: 154/255, alpha: 1))
         configButton.setTitle("Personaje", for: .normal)
         configButton.layer.cornerRadius = 10
         configButton.addTarget(self, action: #selector(characterFunc), for: .touchUpInside)

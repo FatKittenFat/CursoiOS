@@ -24,10 +24,11 @@ public struct Question {
     ]
     public static var questionNumber = 0
     
-    public static let answers: Array = [2, 1, 1, 3, 1]
+    public static let answers: Array = [2, 1, 1, 3, 2]
     
     public static var numberQuestion = [1, 2, 3, 4 ,5]
     
-    public static var score = 0
+    
+    public static let imagesMovies: Array = ["ScaryMovie", "It", "Padrino", "InsideOut", "Shrek"]
 }
 
